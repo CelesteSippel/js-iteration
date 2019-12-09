@@ -1,17 +1,12 @@
 /*
-
    Welcome to JS Interation
-
    Down below you will find instructions for code to write.
-
    As you write and save your code, you can look in your terminal where you
    ran `yarn test` to see if your code is working. The tests continuously check
    your work each time you save. If a test is failing either you have not yet
    defined that function or you have not defined it correctly.
-
    Once you finish a function and have it correct, the test will tell you if/how
    the next function is working.
-
 */
 
 /**
@@ -27,7 +22,15 @@
  */
 
 // ...
+/*const yelling = (array) => {
 
+}*/
+
+const yelling = words => {
+  return words.map(word => {
+    return word.toUpperCase()
+  })
+}
 /**
  *
  * Define a function named `doubleTrouble` that takes an array of
@@ -42,23 +45,40 @@
  * strings as an argument and returns a new array with each string
  * suffixed with " is at index X" where X is the index of the element
  */
+const doubleTrouble = numbers => {
+  return numbers.map(number => {
+    return number * 2
+  })
+}
 
 // ...
-
+const stringyIndexes = strings => {
+  return strings.map((string, index) => {
+    return string + ' is at index ' + index
+  })
+}
 /*
  * Define a function onlyTheEvenSurvive that accepts an array of
  * numbers and returns only the elements that are even
  */
 
 // ...
-
+const onlyTheEvenSurvive = numbers => {
+  return numbers.filter(number => {
+    return number % 2 === 0
+  })
+}
 /*
  * Define a function onlyTheEvenIndexedSurvive that accepts an array of
  * numbers and returns only the elements at indexes that are even
  */
 
 // ...
-
+const onlyTheEvenIndexedSurvive = array => {
+  return array.filter((number, index) => {
+    return index % 2 === 0
+  })
+}
 /*
  * Define a function bestMoviesOfTheYear that accepts an array of
  * movie objects AND a year and returns the names of movies that are
@@ -74,6 +94,15 @@
  */
 
 // ...
+const bestMoviesOfTheYear = (movies, year) => {
+  return movies
+    .filter(movie => {
+      return movie.year === year && movie.score > 90
+    })
+    .map(movie => {
+      return movie.name
+    })
+}
 
 /*
  * Define a function everyoneIsOdd that accepts an array of
@@ -82,6 +111,11 @@
  */
 
 // ...
+const everyoneIsOdd = array => {
+  return array.every(number => {
+    return number % 2 === 1
+  })
+}
 
 /*
  * Define a function findTheNeedle that accepts an array of
@@ -90,6 +124,11 @@
  */
 
 // ...
+const findTheNeedle = array => {
+  return array.find(string => {
+    return string.includes('needle')
+  })
+}
 
 /*
  * Define a function findTheNeedleIndex that accepts an array of
@@ -98,7 +137,11 @@
  */
 
 // ...
-
+const findTheNeedleIndex = array => {
+  return array.findIndex(value => {
+    return value.includes('needle')
+  })
+}
 /*
  * Define a function someoneToLove that accepts an array of
  * strings and returns true if at least one string is exactly
@@ -106,6 +149,11 @@
  */
 
 // ...
+const someoneToLove = array => {
+  return array.some(string => {
+    return string.length === 4
+  })
+}
 
 /*
  * Define a function mapYourself that accepts an array of
@@ -117,7 +165,13 @@
  */
 
 // ...
-
+const mapYourself = array => {
+  let newArray = []
+  for (let i = 0; i < array.length; i++) {
+    newArray.push(array[i] * 2)
+  }
+  return newArray
+}
 /*
  * Define a function filterYourself that accepts an
  * array of numbers and returns a new array containing
@@ -129,7 +183,15 @@
  */
 
 // ...
-
+const filterYourself = array => {
+  let evenNumbers = []
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] % 2 === 0) {
+      evenNumbers.push(array[i])
+    }
+  }
+  return evenNumbers
+}
 /*
  * Define a function everyYourself that accepts an
  * array of numbers and returns true if every number
@@ -141,7 +203,14 @@
  */
 
 // ...
-
+const everyYourself = array => {
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] % 2 !== 0) {
+      return false
+    }
+  }
+  return true
+}
 /**
  * NOTE: Don't modify anything below this line...
  */
@@ -158,7 +227,7 @@ const ensureDefined = (t, method) => {
   }
 }
 
-test('Function Check', t => ensureDefined(t, 'yelling'))
+test('Function Check - yelling', t => ensureDefined(t, 'yelling'))
 test('yelling()', t => {
   t.deepEqual(yelling(['now', 'is', 'the', 'time']), [
     'NOW',
@@ -168,12 +237,12 @@ test('yelling()', t => {
   ])
 })
 
-test('Function Check', t => ensureDefined(t, 'doubleTrouble'))
+test('Function Check - double trouble', t => ensureDefined(t, 'doubleTrouble'))
 test('doubleTrouble()', t => {
   t.deepEqual(doubleTrouble([2, 3, 9, 0, -5]), [4, 6, 18, 0, -10])
 })
 
-test('Function Check', t => ensureDefined(t, 'stringyIndexes'))
+test('Function Check - string indexes', t => ensureDefined(t, 'stringyIndexes'))
 test('stringyIndexes', t => {
   t.deepEqual(stringyIndexes(['how', 'now', 'brown', 'cow']), [
     'how is at index 0',
@@ -183,7 +252,8 @@ test('stringyIndexes', t => {
   ])
 })
 
-test('Function Check', t => ensureDefined(t, 'onlyTheEvenSurvive'))
+test('Function Check - only the even survive', t =>
+  ensureDefined(t, 'onlyTheEvenSurvive'))
 test('onlyTheEvenSurvive', t => {
   t.deepEqual(onlyTheEvenSurvive([42, 50, 100, 5, -43, 17, 44]), [
     42,
@@ -193,7 +263,8 @@ test('onlyTheEvenSurvive', t => {
   ])
 })
 
-test('Function Check', t => ensureDefined(t, 'onlyTheEvenIndexedSurvive'))
+test('Function Check - only the even indexed surived', t =>
+  ensureDefined(t, 'onlyTheEvenIndexedSurvive'))
 test('onlyTheEvenIndexedSurvive', t => {
   t.deepEqual(
     onlyTheEvenIndexedSurvive([
@@ -265,7 +336,8 @@ test('onlyTheEvenIndexedSurvive', t => {
   )
 })
 
-test('Function Check', t => ensureDefined(t, 'bestMoviesOfTheYear'))
+test('Function Check - best movie', t =>
+  ensureDefined(t, 'bestMoviesOfTheYear'))
 test('bestMoviesOfTheYear', t => {
   const movies = [
     { name: 'The Grand Budapest Hotel', year: 2014, score: 91 },
@@ -288,13 +360,13 @@ test('bestMoviesOfTheYear', t => {
   t.deepEqual(bestMoviesOfTheYear(movies, 2001), [])
 })
 
-test('Function Check', t => ensureDefined(t, 'everyoneIsOdd'))
+test('Function Check - is odd', t => ensureDefined(t, 'everyoneIsOdd'))
 test('everyoneIsOdd', t => {
   t.is(everyoneIsOdd([9, 15, 27, 101, 33]), true)
   t.is(everyoneIsOdd([9, 23, 3, 4, 77]), false)
 })
 
-test('Function Check', t => ensureDefined(t, 'findTheNeedle'))
+test('Function Check - needle', t => ensureDefined(t, 'findTheNeedle'))
 test('findTheNeedle', t => {
   t.is(
     findTheNeedle(['one', 'time', 'there was a needle at', 'the market']),
@@ -302,7 +374,8 @@ test('findTheNeedle', t => {
   )
 })
 
-test('Function Check', t => ensureDefined(t, 'findTheNeedleIndex'))
+test('Function Check - find needle', t =>
+  ensureDefined(t, 'findTheNeedleIndex'))
 test('findTheNeedleIndex', t => {
   t.is(
     findTheNeedleIndex(['one', 'time', 'there was a needle at', 'the market']),
@@ -310,13 +383,13 @@ test('findTheNeedleIndex', t => {
   )
 })
 
-test('Function Check', t => ensureDefined(t, 'someoneToLove'))
+test('Function Check- to love ', t => ensureDefined(t, 'someoneToLove'))
 test('someoneToLove()', t => {
   t.is(someoneToLove(['how', 'now', 'brown', 'cow']), false)
   t.is(someoneToLove(['how', 'now', 'blue', 'cow']), true)
 })
 
-test('Function Check', t => ensureDefined(t, 'mapYourself'))
+test('Function Check - map', t => ensureDefined(t, 'mapYourself'))
 test('mapYourself()', t => {
   const originalMap = Array.prototype.map
 
@@ -328,7 +401,7 @@ test('mapYourself()', t => {
   Array.prototype.map = originalMap
 })
 
-test('Function Check', t => ensureDefined(t, 'filterYourself'))
+test('Function Check - filter', t => ensureDefined(t, 'filterYourself'))
 test('filterYourself()', t => {
   const original = Array.prototype.filter
 
@@ -339,7 +412,7 @@ test('filterYourself()', t => {
   Array.prototype.filter = original
 })
 
-test('Function Check', t => ensureDefined(t, 'everyYourself'))
+test('Function Check - every ', t => ensureDefined(t, 'everyYourself'))
 test('everyYourself()', t => {
   const original = Array.prototype.every
 
@@ -350,5 +423,3 @@ test('everyYourself()', t => {
 
   Array.prototype.every = original
 })
-
-/* eslint-enable */
