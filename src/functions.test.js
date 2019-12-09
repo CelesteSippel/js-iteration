@@ -393,35 +393,17 @@ test('someoneToLove()', t => {
 
 test('Function Check - map', t => ensureDefined(t, 'mapYourself'))
 test('mapYourself()', t => {
-  const originalMap = Array.prototype.map
-
-  Array.prototype.map = () => []
-
   t.deepEqual(mapYourself([1, 2, 3]), [2, 4, 6])
   t.deepEqual(mapYourself([9, 0, 1]), [18, 0, 2])
-
-  Array.prototype.map = originalMap
 })
 
 test('Function Check - filter', t => ensureDefined(t, 'filterYourself'))
 test('filterYourself()', t => {
-  const original = Array.prototype.filter
-
-  Array.prototype.filter = () => []
-
   t.deepEqual(filterYourself([8, 1, 2, 3]), [8, 2])
-
-  Array.prototype.filter = original
 })
 
 test('Function Check - every ', t => ensureDefined(t, 'everyYourself'))
 test('everyYourself()', t => {
-  const original = Array.prototype.every
-
-  Array.prototype.every = () => undefined
-
   t.deepEqual(everyYourself([8, 1, 2, 3]), false)
   t.deepEqual(everyYourself([8, 10, 22, 38]), true)
-
-  Array.prototype.every = original
 })
